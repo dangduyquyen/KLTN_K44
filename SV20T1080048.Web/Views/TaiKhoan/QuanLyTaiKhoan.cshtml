@@ -1,0 +1,179 @@
+﻿@model SV20T1080048.DomainModels.Customer
+@{
+
+}
+<div class="container">
+    <div class="main-body">
+
+        @{
+            var userData = User.GetUserData();
+            if (userData != null)
+            {
+
+                <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-3">
+                                        <img src="~/images/@userData.Photo" height="100px" width="100px">
+                                    </div>
+                                    <div>
+                                        <h5>Chào @userData.DisplayName</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mt-3">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <a id="nav_Mng_Acc" href="~/TaiKhoan">
+                                        Quản lý Tài khoản
+                                    </a>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <a id="nav_Mng_Acc" href="~/TaiKhoan/QuanLyTaiKhoan/@userData.UserId">
+                                        Thông tin tài khoản
+                                    </a>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <a id="nav_Mng_Acc" href="~/TaiKhoan/QuanLyDonHang/@userData.UserId">
+                                        Đơn hàng của tôi
+                                    </a>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <a id="nav_Mng_Acc" href="~/TaiKhoan/QuanLyLichHen/@userData.UserId">
+                                        Lịch hẹn của tôi
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td>Họ tên</td>
+                                            <td>@Model.CustomerName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Địa chỉ</td>
+                                            <td>@Model.Address</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Số điện thoại</td>
+                                            <td>@Model.Phone</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td>@Model.Email</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-info" data-toggle="modal" data-target="#infoModal">Chỉnh sửa</button>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <button class="btn btn-warning" data-toggle="modal" data-target="#changePasswordModal">Đổi mật khẩu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true" style="margin-top:200px">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="infoModalLabel">Thông tin liên hệ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form with action -->
+                <form action="~/TaiKhoan/Edit/@userData." method="post">
+                    <div class="form-group">
+                        <label for="fullName">Họ tên:</label>
+                        <input type="text" class="form-control" id="fullName" name="fullName" value="@Model.CustomerName">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactName">Tên liên hệ:</label>
+                        <input type="text" class="form-control" id="contactName" name="contactName" value="@Model.ContactName">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Địa chỉ:</label>
+                        <input type="text" class="form-control" id="address" name="address" value="@Model.Address">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Thành phố:</label>
+                        <input type="text" class="form-control" id="city" name="city" value="@Model.Province">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Số điện thoại:</label>
+                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="@Model.Phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" value="@Model.Email">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Đổi mật khẩu -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true" style="margin-top:240px">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changePasswordModalLabel">Đổi mật khẩu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form đổi mật khẩu -->
+                <form action="~/TaiKhoan/ChangePassword/@userData.UserId" method="post">
+                    <div class="form-group">
+                        <label for="currentPassword">Mật khẩu hiện tại:</label>
+                        <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">Mật khẩu mới:</label>
+                        <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Xác nhận mật khẩu mới:</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+

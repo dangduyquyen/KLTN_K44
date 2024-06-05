@@ -1,0 +1,91 @@
+﻿@model SV20T1080048.DomainModels.Appointment;
+@using SV20T1080048.Web
+@{
+    //
+}
+
+<div class="box box-primary">
+    <div class="box-body">
+        
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="alert alert-warning">
+                <p>@ViewBag.ErrorMessage</p>
+            </div>
+        }
+        <form action="~/Admin/Appointment/Edit" method="post" class="form-horizontal">
+            <!-- Hidden Input for Appointment ID -->
+            <input type="hidden" name="AppointmentID" value="@Model.AppointmentID" />
+
+            <div class="form-group">
+                <label for="lichHenAction" class="col-sm-2 control-label">Cập nhật trạng thái lịch hẹn</label>
+                <div class="col-sm-10">
+                    <select id="lichHenAction" name="Status" class="form-control">
+                        <option value="1">Lịch hẹn mới</option>
+                        <option value="2">Duyệt lịch hẹn</option>
+                        <option value="-2">Từ chối lịch hẹn</option>
+                        <option value="-1">Hủy lịch hẹn</option>
+                        <option value="3">Hoàn thành lịch hẹn</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="CustomerName" class="col-sm-2 control-label">Tên khách hàng:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.CustomerName, new { @class = "form-control", @autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(m => m.CustomerName, "", new { @style = "color:#f00" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="ServiceName" class="col-sm-2 control-label">Tên dịch vụ:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.ServiceName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ServiceName, "", new { @style = "color:#f00" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="AppointmentDate" class="col-sm-2 control-label">Ngày hẹn:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.AppointmentDate, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                    @Html.ValidationMessageFor(m => m.AppointmentDate, "", new { @style = "color:#f00" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="AppointmentTime" class="col-sm-2 control-label">Thời gian hẹn:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.AppointmentTime, new { @class = "form-control", @type = "time" })
+                    @Html.ValidationMessageFor(m => m.AppointmentTime, "", new { @style = "color:#f00" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Notes" class="col-sm-2 control-label">Ghi chú:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Notes, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Notes, "", new { @style = "color:#f00" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="StatusDescription" class="col-sm-2 control-label">Trạng thái</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.StatusDescription, new { @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(m => m.StatusDescription, "", new { @style = "color:#f00" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-floppy-o"></i> Lưu dữ liệu
+                    </button>
+                    <a href="~/Admin" class="btn btn-flat btn-default"> Quay lại</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

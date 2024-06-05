@@ -1,0 +1,82 @@
+﻿﻿@using SV20T1080048.Web.AddCodes
+@using SV20T1080048.Web;
+@model IEnumerable<SV20T1080048.Web.Models.CartItem>
+@{
+    int stt = 0;
+    decimal sumTotal = 0;
+    string errorMessage = ViewBag.ErrorMessage.ToString();
+ 
+}
+
+<div class="main">
+    <section class="h-100 h-custom" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            
+                                    
+                                    <!--Hiện thị danh sách sản phẩm có trong giỏ hàng-->
+                                    <div id="cartContent">
+                                    </div>
+
+                              
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</div>
+
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            showCart(); // Gọi hàm để hiển thị giỏ hàng khi trang tải xong
+        });
+
+        function showCart() {
+            $.ajax({
+                url: "/GioHang/ShowCart",
+                type: "GET",
+                error: function () {
+                    alert("Your request is not valid!");
+                },
+                success: function (data) {
+                    $("#cartContent").html(data);
+                }
+            });
+        }
+
+        
+
+        function removeFromCart(id) {
+            $.ajax({
+                url: "/GioHang/RemoveFromCart/" + id,
+                type: "GET",
+                error: function () {
+                    alert("Your request is not valid!");
+                },
+                success: function (data) {
+                    showCart();
+                    //Chưa check remove thành công hay chưa thành công. viết mẫu như vậy thôi.
+                }
+            });
+        }
+
+        function clearCart() {
+            $.ajax({
+                url: "/GioHang/ClearCart",
+                type: "GET",
+                error: function () {
+                    alert("Your request is not valid!");
+                },
+                success: function (data) {
+                    showCart();
+                    //Chưa check clear thành công hay chưa thành công. viết mẫu như vậy thôi.
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,31 @@
+﻿@model SV20T1080048.DomainModels.CategoryService
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div class="box box-danger">
+    <div class="box box-body">
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="alert alert-warning">
+                <p>@ViewBag.ErrorMessage</p>
+            </div>
+        }
+        <form action="~/Admin/CategoryService/Delete/@Model.CategoryServiceID" method="post">
+            <div class="form-group">
+                <label>Tên loại dịch vụ:</label>
+                <p class="form-control-static" style="border-bottom: 1px dotted #646464">@Model.CategoryServiceName</p>
+            </div>
+ 
+
+            <button type="submit" class="btn btn-danger">
+                <i class="fa fa-remove"></i>
+                Xóa dữ liệu
+            </button>
+
+            <a href="~/Admin/CategoryService" class="btn btn-default">Quay lại</a>
+        </form>
+    </div>
+</div>
+

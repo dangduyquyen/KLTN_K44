@@ -1,0 +1,40 @@
+.main{
+    margin-top: 10px;
+      
+  }
+.main .content .row h2{
+     margin-top: 25px;
+     margin-bottom: 25px;
+     font-family: Arial, sans-serif;
+}
+
+
+.main .content .row .col-8 p{
+    font-family: Arial, sans-serif;
+    text-align: justify;
+}
+
+.main .content .row .col-4 img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.main .content .row .col-4:hover img {
+    transform: scale(1.1);
+}
+
+/* slider */
+.slider {
+    white-space: nowrap;
+    transition: transform 0.5s ease;
+}
+
+.slider img {
+    
+    display: inline-block;
+}
+.slideshow{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

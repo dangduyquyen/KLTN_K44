@@ -1,0 +1,52 @@
+.main{
+
+    
+}
+
+.container .Title-Lien-He{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif
+}
+.Title-Lien-He h1{
+    color: #996633;
+    padding: 20PX;
+}
+.Title-Lien-He h6{
+    padding-bottom: 20PX;
+}
+
+.row{
+    margin-bottom: 50px;
+}
+.contact-info{
+    border: solid black 0.1px;
+    margin: 20px;
+    padding: 20px;
+}
+.contact-info h4{
+    color: #996633;
+    font-size: 30px;
+    padding-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.contact-info h5{
+    color: #996633;
+    font-size: 27px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contact-info h6{
+    font-size: 18px;
+    padding-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contact-info i{
+    color: #996633;
+    size: 20px;
+}
+.contact-map{
+    margin-bottom: 50px;
+}

@@ -1,0 +1,226 @@
+.wrapper{
+    clear: both;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    float: left;
+}
+.inner-wrapper{
+    margin: 0px;
+    width: 100%;
+    float: left;
+    padding: 0px;
+}
+/* HEADER TOP */
+.top-bar{
+    width: 100%;
+    clear: both;
+    float: left;
+    padding: 0px;
+    position: relative;
+    line-height: 50px;
+    border-bottom: 1px dashed #ededed;
+    border-top: 1px dashed #ededed;
+    background-color: #fff;
+    
+    background: #fcf5f6;
+    color: #808080;
+}
+.top-menu {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+.top-menu li {
+    float: left;
+    display: inline;
+    margin: 0px;
+    padding: 0px 20px;
+    border-left: 1px dashed #ededed;
+}
+
+.top-menu li span{
+    color: #996633;
+}
+
+.top-menu li a{
+    color: #996633;
+    text-decoration: none;
+}
+
+.top-right {
+    float: right;
+    width: 25%;
+    margin: 0px;
+    padding: 0px 8px;
+    border-right: 1px dashed #ededed;
+}
+
+.top-bar .dt-sc-social-icons {
+    float: right;
+    margin: 0;
+    padding: 5px 0;
+}
+.top-right li {
+    float: right;
+    display: inline;
+    display: list-item;
+    text-align: -webkit-match-parent;
+    
+}
+
+.top-right .dt-sc-social-icons li {
+    float: left;
+    margin: 0px;
+    padding: 0;
+}
+.top-right .dt-sc-social-icons li a {
+    padding: 0px 8px;
+    border: none;
+    min-width: 0;
+    text-decoration: none;
+    color: #808080;
+}
+
+.top-right .dt-sc-social-icons li a :hover {
+    font-weight: bold;
+    color: #996633;
+}
+
+.top-right .dt-sc-social-icons {
+    list-style: none; /* Loại bỏ dấu chấm */
+    padding: 0; /* Loại bỏ padding mặc định */
+}
+
+.top-right .dt-sc-social-icons li i {
+    text-decoration: none; /* Loại bỏ gạch chân từ biểu tượng */
+}
+
+.main{
+
+    max-height: 100%;
+}
+
+/* END HEADER TOP */
+/* HEADER */    
+#header-wrapper {
+    float: left;
+    width: 100%;
+    z-index: 99999;
+}
+
+.header, #main-menu ul li.menu-item-simple-parent ul, .megamenu-child-container {
+    background-color: #996633 !important;
+}
+
+.header {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    position: relative;
+    z-index: 9999;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 3px 6px -2px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 3px 6px -2px rgba(0, 0, 0, 0.15);
+}
+.container {
+    width: 1170px;
+    margin: 0 auto;
+    position: relative;
+    clear: both;
+}
+
+/* Logo */
+#logo {
+    float: left;
+    display: inline;
+    padding: 8px 12px 0;
+    margin: 0px;
+}
+#logo a img {
+    max-width: 100%;
+}
+
+a img {
+    border: none;
+}
+img {
+    max-width: 100%;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+/* End logo */
+
+div {
+    display: block;
+}
+
+nav {
+    display: block;
+}
+
+body {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    background: #ffffff;
+    color: #92a7bb;
+    margin: 0;
+}
+
+#main-menu {
+    float: right;
+    margin: 0px;
+    padding: 0px;
+}
+
+.dt-menu-toggle {
+    color: #ffffff;
+    cursor: pointer;
+    display: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#main-menu ul {
+    margin: 0px auto;
+    padding: 0px;
+    position: relative;
+}
+
+#main-menu > ul > li {
+    margin-left: -4px;
+    display: inline-block;
+    padding: 0;
+    position: relative;
+}
+
+#main-menu > ul > li > a {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: block;
+    padding: 29px 21px 30px;
+    color: #fff;
+    position: relative;
+    text-decoration: none;
+}
+#main-menu > ul:hover{
+    cursor: pointer;
+}
+#main-menu > ul > li :hover{
+ background-color: #D0770B;
+ 
+}
+
+.copyright p{
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}

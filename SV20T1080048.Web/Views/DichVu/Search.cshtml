@@ -1,0 +1,80 @@
+﻿@model SV20T1080048.Web.Models.PaginationSearchService
+@{
+    Layout = null;
+    
+}
+
+<div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-10">
+
+            @foreach (var item in Model.Data)
+            {
+                <div class="row p-2 bg-white border rounded">
+                    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="~/images/service/@item.Photo"></div>
+                    <div class="col-md-6 mt-1">
+                        <h5>@item.ServiceName</h5>
+
+                        <div class="mt-1 mb-1 spec-1"><span><b>Mô tả: </b></span><span class="dot"></span><span>@item.Description</span><span class="dot"></span></div>
+
+                    </div>
+                    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                        <div class="d-flex flex-row align-items-center">
+                            <h4 class="mr-1">@string.Format("{0,-10:N0}", item.Price)</h4><span class="strike-text">/ 1 buổi</span>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                            <h4 class="mr-1">@string.Format("{0,-10:N0}", item.PriceForCombo)</h4><span class="strike-text">/ 5 buổi</span>
+                        </div>
+                        <div class="d-flex flex-column mt-4">
+                            <a class="btn btn-warning btn-sm" href="@Url.Action("BookService", "DichVu", new { serviceName = item.ServiceName, serviceID = item.ServiceID })">
+                                <b>Đặt lịch ngay!</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="text-center">
+        <ul class="pagination" style="display:inline-block;">
+            @if (Model.Page > 1)
+            {
+                <li><a style="background-color: #996633;border: none;" href="javascript:;" onclick="doSearch(1, '@Model.SearchValue')">&lt;&lt;</a></li>
+                <li><a style="background-color: #996633;border: none;" href="javascript:;" onclick="doSearch(@(Model.Page - 1), '@Model.SearchValue')">&lt;</a></li>
+            }
+
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                if (i >= Model.Page - 4 && i <= Model.Page + 4)
+                {
+                    if (i == Model.Page)
+                    {
+                        <li class="active"><a style="background-color: #996633;border: none;" href="javascript:;">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a style="background-color: #996633;border: none;" href="javascript:;" onclick="doSearch(@i, '@Model.SearchValue')">@i</a></li>
+                    }
+                }
+                else if ((i == 1 && Model.Page > 8) || (i == Model.PageCount && Model.Page < Model.PageCount - 3))
+                {
+                    // Hiển thị nút "..." ở đầu hoặc cuối danh sách
+                    <li><a style="background-color: #996633;border: none;" href="javascript:;">...</a></li>
+                }
+            }
+
+            @if (Model.Page < Model.PageCount)
+            {
+                <li><a style="background-color: #996633;border: none;" href="javascript:;" onclick="doSearch(@(Model.Page + 1), '@Model.SearchValue')">></a></li>
+                <li><a style="background-color: #996633;border: none;" href="javascript:;" onclick="doSearch(@Model.PageCount, '@Model.SearchValue')">>></a></li>
+            }
+        </ul>
+    </div>
+</div>
+
+

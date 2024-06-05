@@ -1,0 +1,50 @@
+﻿@model SV20T1080048.Web.Models.PaginationSearchInput;
+
+<div class="container mt-4">
+    <form id="formSearchInput" action="DichVu/Search" method="get" class="search-form mb-4">
+        <div class="input-group">
+            <input type="text" name="searchValue" id="searchValue" class="form-control" placeholder="Nhập tên dịch vụ cần tìm">
+
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            </div>
+        </div>
+        <input type="hidden" name="pageSize" value="@Model.PageSize" />
+    </form>
+
+    <div id="searchResult" class="table-responsive">
+        <!--Hiển thị kết quả ở đây-->
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Bắt sự kiện submit của form để thực hiện tìm kiếm qua AJAX
+            $("#formSearchInput").submit(function (event) {
+                event.preventDefault(); // Ngăn chặn hành động submit mặc định
+                doSearch(@Model.Page); // Gọi hàm tìm kiếm
+            });
+
+            doSearch(@Model.Page); // Thực hiện tìm kiếm ban đầu khi trang được tải
+        });
+
+        function doSearch(page) {
+            var url = $("#formSearchInput").prop("action"); // Lấy URL của form
+            var postData = $("#formSearchInput").serializeArray(); // Lấy các giá trị dữ liệu từ form
+            postData.push({ "name": "page", "value": page }); // Thêm thông số trang vào dữ liệu gửi
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                data: postData,
+                error: function (error) {
+                    alert("Yêu cầu của bạn không hợp lệ!");
+                },
+                success: function (data) {
+                    $("#searchResult").html(data); // Hiển thị kết quả tìm kiếm trong phần tử có id "searchResult"
+                }
+            });
+        }
+    </script>
+}

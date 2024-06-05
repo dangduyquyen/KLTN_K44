@@ -1,0 +1,127 @@
+.main{
+  margin-top: 10px;
+
+    
+}
+.Sap-Xep-products{
+  
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  border: black solid 0px;
+  background-color: #EAEAEA;
+  list-style-type: none;
+  text-align: center;
+  
+}
+.search-box {
+  margin-left: 500px;
+  float: right;
+}
+.title-nav{
+  font-size: 30px;
+  
+}
+.nav li {
+  display: inline-block;
+  font-size: 15px;
+  padding: 10px;
+}
+.nav li button{
+  background-color: white;
+  border: 0.2px;
+  line-height: 24.5px;
+}
+.nav li button:hover{
+  background-color: #996633;
+  color: white;
+}
+
+.col.product-card {
+    width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .product-image {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .product-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+  }
+  
+  .product-image:hover img {
+    transform: scale(1.1);
+  }
+  
+  .product-info {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .product-name {
+    font-size: 1.2em;
+    margin: 0 0 10px 0;
+    display: block; /* Để tạo hiệu ứng chuyển động đẹp hơn */
+    color: #333; /* Màu chữ mặc định */
+    text-decoration: none; /* Bỏ gạch chân của liên kết */
+  }
+  
+  .product-name:hover {
+    color: #996633; 
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .product-price {
+    color: #666;
+    margin: 0;
+  }
+  
+  .product-sold {
+    color: #888;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+  }
+  
+  .btn-add-to-cart {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F5B16D;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+  }
+  
+  .btn-add-to-cart:hover {
+    background-color: #996633;
+  }
+
+.button-card-product {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+    .button-card-product:hover {
+        background-color: #e7e7e7;
+    }
+#add-button {
+    text-decoration: none
+}

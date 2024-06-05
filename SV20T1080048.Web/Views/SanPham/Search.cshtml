@@ -1,0 +1,76 @@
+﻿@model SV20T1080048.Web.Models.PaginationSearchProduct
+
+@{
+    Layout = null;
+}
+<p style="margin:10px 0 10px 0">
+    Có <strong>@string.Format("{0,-10:N0}", Model.RowCount)</strong> sản phẩm. Hiện đang ở trang
+    <strong>@string.Format("{0,-10:N0}", Model.Page)</strong> trên tổng số <strong>@string.Format("{0,-10:N0}", Model.PageCount)</strong> trang.
+</p>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        @foreach (var item in Model.Data)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card p-3 bg-white h-100">
+                    <i class="fa-brands fa-squarespace"></i>
+                    <div class="about-product text-center mt-2">
+                        <a href="@Url.Action("ChiTietSanPham", new { id = item.ProductID, categoryID = item.CategoryID })"><img src="~/images/products/@item.Photo" width="300"></a>
+                        <div>
+                            <a href="@Url.Action("ChiTietSanPham", new { id = item.ProductID, categoryID = item.CategoryID })" style="text-decoration: none; color: black;"><h5>@item.ProductName</h5></a>
+                        </div>
+                    </div>
+                    <div class="stats mt-2">
+                        <div class="d-flex justify-content-between p-price"><span>Đơn vị </span><span>@item.Unit</span></div>
+                    </div>
+                    <div class="d-flex justify-content-between total font-weight-bold mt-4"><span><b>Giá</b></span><span><b>@string.Format("{0,-10:N0}", item.Price)</b></span></div>
+                    <br />
+
+                    <!--<a href="@Url.Action("ChiTietSanPham", new { id = item.ProductID, categoryID = item.CategoryID })" style="text-decoration: none"><button class="btn-add-to-cart">Chi</button></a>-->
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="container">
+    <div class="text-center">
+        <ul class="pagination" style="display:inline-block;">
+            @if (Model.Page > 1)
+            {
+                <li><a style="background-color: #996633;border: none;" href="javascript:;" onclick="doSearch(1, '@Model.SearchValue')">&lt;&lt;</a></li>
+                <li><a style="background-color: #996633;border: none;" href="javascript:;" onclick="doSearch(@(Model.Page - 1), '@Model.SearchValue')">&lt;</a></li>
+            }
+
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                if (i >= Model.Page - 4 && i <= Model.Page + 4)
+                {
+                    if (i == Model.Page)
+                    {
+                        <li class="active"><a style="background-color: #996633;border: none;" href="javascript:;">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a style="background-color: #996633;border: none;" href="javascript:;" onclick="doSearch(@i, '@Model.SearchValue')">@i</a></li>
+                    }
+                }
+                else if ((i == 1 && Model.Page > 8) || (i == Model.PageCount && Model.Page < Model.PageCount - 3))
+                {
+                // Hiển thị nút "..." ở đầu hoặc cuối danh sách
+                    <li><a style="background-color: #996633;border: none;" href="javascript:;">...</a></li>
+                }
+            }
+
+            @if (Model.Page < Model.PageCount)
+            {
+                <li><a style="background-color: #996633;border: none;" href="javascript:;" onclick="doSearch(@(Model.Page + 1), '@Model.SearchValue')">></a></li>
+                <li><a style="background-color: #996633;border: none;" href="javascript:;" onclick="doSearch(@Model.PageCount, '@Model.SearchValue')">>></a></li>
+            }
+        </ul>
+    </div>
+</div>
+
+

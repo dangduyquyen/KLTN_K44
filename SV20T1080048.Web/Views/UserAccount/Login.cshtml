@@ -1,0 +1,47 @@
+﻿@{
+
+}
+
+<div class="container" style="width:500px;  height: auto; border: 0.5px, solid, black; margin-top: 164px; border-radius: 10px">
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+    <form style="padding: 50px;" action="~/UserAccount/login" method="post">
+        <!-- Email input -->
+        <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Nhập Email</label>
+            <input type="email" id="form2Example1" class="form-control" name="UserName" />
+        </div>
+
+        <!-- Password input -->
+        <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="form2Example2">Nhập mật khẩu</label>
+            <input type="password" id="form2Example2" class="form-control" name="PassWord" />
+
+        </div>
+
+        <!-- 2 column grid layout for inline styling -->
+        <div class="row mb-4 d-flex justify-content-center">
+            <div class="col center">
+                <!-- Simple link -->
+                <a href="#!">Quên mật khẩu?</a>
+            </div>
+        </div>
+
+        <!-- Submit button -->
+        <div class="row mb-4 d-flex justify-content-center">
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Đăng Nhập</button>
+        </div>
+
+        <!-- Register buttons -->
+        <div class="text-center">
+            <p>Bạn chưa có tài khoản? <a href="#!">Đăng ký ngay</a></p>
+
+        </div>
+    </form>
+</div>
+
+

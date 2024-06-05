@@ -1,0 +1,28 @@
+﻿@model SV20T1080048.DomainModels.CategoryService;
+@using SV20T1080048.Web
+@{
+    //
+}
+
+<div class="box box-primary">
+    <div class="box-body">
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="alert alert-warning">
+                <p>@ViewBag.ErrorMessage</p>
+            </div>
+        }
+        <form action="~/Admin/CategoryService/Save" method="post">
+            <input type="hidden" name="CategoryServiceID" value="@Model.CategoryServiceID" />
+            <div class="form-group">
+                <label for="email">Tên loại hàng:</label>
+                @Html.TextBoxFor(m => m.CategoryServiceName, new{@class = "form-control", @autofocus = "autofocus"})
+                @Html.ValidationMessageFor(m => m.CategoryServiceName, "", new{@style= "color:#f00"})
+
+            </div>
+
+            <button type="submit" class="btn btn-primary"> <i class="fa fa-floppy-o"></i> Lưu dữ liệu</button>
+            <a href="~/Admin/CategoryService" class="btn btn-flat btn-default"> Quay lại</a>
+        </form>
+    </div>
+</div>
